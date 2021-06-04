@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/newecommenrse/static/css/main.404c19b0.chunk.css",
+    "main.js": "/newecommenrse/static/js/main.aafca4d5.chunk.js",
+    "main.js.map": "/newecommenrse/static/js/main.aafca4d5.chunk.js.map",
+    "runtime-main.js": "/newecommenrse/static/js/runtime-main.b779cc56.js",
+    "runtime-main.js.map": "/newecommenrse/static/js/runtime-main.b779cc56.js.map",
+    "static/js/2.3bc201d4.chunk.js": "/newecommenrse/static/js/2.3bc201d4.chunk.js",
+    "static/js/2.3bc201d4.chunk.js.map": "/newecommenrse/static/js/2.3bc201d4.chunk.js.map",
+    "index.html": "/newecommenrse/index.html",
+    "static/css/main.404c19b0.chunk.css.map": "/newecommenrse/static/css/main.404c19b0.chunk.css.map",
+    "static/js/2.3bc201d4.chunk.js.LICENSE.txt": "/newecommenrse/static/js/2.3bc201d4.chunk.js.LICENSE.txt",
+    "static/media/crown.3a4e2b15.svg": "/newecommenrse/static/media/crown.3a4e2b15.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b779cc56.js",
+    "static/js/2.3bc201d4.chunk.js",
+    "static/css/main.404c19b0.chunk.css",
+    "static/js/main.aafca4d5.chunk.js"
+  ]
+}
