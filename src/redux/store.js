@@ -1,18 +1,18 @@
-import {createStore} from 'redux'
-import {persistStore}from 'redux-persist'
-import { composeWithDevTools } from 'redux-devtools-extension'; // 리덕스 개발자 도구
-import rootReducer from './root-reducer'
+import { createStore,compose, applyMiddleware } from 'redux';
+import { persistStore } from 'redux-persist';
+import logger from 'redux-logger';
 
+import rootReducer from './root-reducer';
 
-// import logger from 'redux-logger'
+const middlewares = [];
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
 
-// const middlewares = [logger];
-// applyMiddleware (...middlewares)
+export const store = createStore(rootReducer, composeEnhancer(applyMiddleware(...middlewares)));
 
+export const persistor = persistStore(store);
 
-export const store = createStore(rootReducer, composeWithDevTools())
-
-export const persistor = persistStore(store)
-
-export default {store, persistor};
+export default { store, persistStore };

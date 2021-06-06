@@ -3,13 +3,13 @@ import 'firebase/firestore';
 import 'firebase/auth';
 
 const config = {
-  apiKey: "AIzaSyDDYPoSlJQqvd32F6LVca7Ru9h281HieoI",
-  authDomain: "mart-db-343a5.firebaseapp.com",
-  projectId: "mart-db-343a5",
-  storageBucket: "mart-db-343a5.appspot.com",
-  messagingSenderId: "750104191553",
-  appId: "1:750104191553:web:fcc1874676236dad13dcc0",
-  measurementId: "G-K0M03CP0LQ"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
+  measurementId: process.env.REACT_APP_MEASUREMENT_ID
 };
 
 firebase.initializeApp(config);
@@ -38,6 +38,34 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
 
   return userRef;
 };
+
+export const addCollectionanddocuments = async(collectionName, objectsToadd) =>{
+  const collectionRef = firestore.collection(collectionName)
+  console.log(collectionRef)
+
+  const batch = firestore.batch()
+  objectsToadd.forEach(obj =>{
+    const newDocRef = collectionRef.doc()
+    batch.set(newDocRef, obj)
+  })
+  return await batch.commit()
+}
+
+export const converCollectionssnapshottomap=(collections)=>{
+  const transformedcollections = collections.docs.map(doc =>{
+    const {title, items} = doc.data();
+    return{
+      routeName: encodeURI(title.toLowerCase()),
+      id:doc.id,
+      title,
+      items
+    }
+  })
+  return transformedcollections.reduce((accumulator, colloection)=>{
+    accumulator[colloection.title.toLowerCase()] = colloection
+    return accumulator
+  }, {})
+}
 
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
